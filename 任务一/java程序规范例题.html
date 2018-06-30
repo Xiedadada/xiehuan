@@ -1,0 +1,235 @@
+<html>
+  <head>
+    <title>谢欢个人主页.html</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+    /*设置超链接样式*/
+    table
+    {
+    	border-collapse: collapse;
+    	border-spacing: 0;
+    }
+    a 
+    {
+        color: #5086a5; 
+        text-decoration: none;
+        font-size: 12px;
+    }
+    a:hover 
+    {
+        color: #5086a5; 
+        text-decoration: underline;
+        font-size: 12px;
+    }
+    a:visited 
+    {
+        color: #5086a5;
+        font-size: 12px;
+    }
+    /*整个tab层居中，宽度为600px*/
+    #tabDiv 
+    {
+        width:600px;
+        margin:1em auto;
+        padding-bottom: 10px;
+        border-right: #b2c9d3 1px solid; 
+        border-top: #b2c9d3 1px solid; 
+        border-left: #b2c9d3 1px solid; 
+        border-bottom: #b2c9d3 1px solid;
+        background: #blue;
+    }
+    /*tab头的样式*/
+    #tabsHead 
+    {
+         padding-left: 0px; 
+         height: 26px; 
+         background-color: #e8f7fc;
+         font-size: 1em; 
+         margin: 1px 0px 0px; 
+         color: #5086a5; 
+         line-height: 26px;
+    }
+    /*已选tab头（超链接）的样式*/
+    .curtab 
+    {
+        padding-top: 0px;
+        padding-right: 10px; 
+        padding-bottom: 0px; 
+        padding-left: 10px; 
+        border-right: #b2c9d3 1px solid; 
+        font-weight: bold; 
+        float: left;
+        cursor: pointer; 
+        background: #ffffff; 
+    }
+    /*未选tab头（超链接）的样式*/
+    .tabs 
+    {
+        border-right: #c1d8e0 1px solid; 
+        padding-top: 0px;
+        padding-right: 10px; 
+        padding-bottom: 0px; 
+        padding-left: 10px; 
+        font-weight: normal; 
+        float: left;
+        cursor: pointer; 
+    }
+    p
+    {
+        font-size:12pt;
+        text-indent:2em;
+    }
+    </style>
+
+    <script type="text/jscript">
+        //显示tab（tabHeadId：tab头中当前的超链接；tabContentId要显示的层ID）
+        function showTab(tabHeadId,tabContentId) 
+        {
+            //tab层
+            var tabDiv = document.getElementById("tabDiv");
+            //将tab层中所有的内容层设为不可见
+            //遍历tab层下的所有子节点
+            var taContents = tabDiv.childNodes;
+            for(i=0; i<taContents.length; i++) 
+            {
+                //将所有内容层都设为不可见
+                if(taContents[i].id!=null && taContents[i].id != 'tabsHead')
+                {
+                    taContents[i].style.display = 'none';
+                }
+            }
+            //将要显示的层设为可见
+            document.getElementById(tabContentId).style.display = 'block';          
+            //遍历tab头中所有的超链接
+            var tabHeads = document.getElementById('tabsHead').getElementsByTagName('a');
+            for(i=0; i<tabHeads.length; i++) 
+            { 
+                //将超链接的样式设为未选的tab头样式
+                tabHeads[i].className='tabs'; 
+            }
+            //将当前超链接的样式设为已选tab头样式
+            document.getElementById(tabHeadId).className='curtab';
+            document.getElementById(tabHeadId).blur();
+        }
+    </script>
+   
+  </head>
+  
+  <body background="C:\Users\DELL\Desktop\web作业\100.jpg">
+  <span id="localtime"></span>
+    <script type="text/javascript">
+   function showLocale(objD) {    
+	   var str, colorhead, colorfoot;    
+	   var yy = objD.getYear();    
+	   if (yy < 1900)      yy = yy + 1900;   
+	   var MM = objD.getMonth() + 1;
+	   if (MM < 10)     MM = '0' + MM;
+	   var dd = objD.getDate();
+	   if (dd < 10)     dd = '0' + dd;    var hh = objD.getHours();
+	   if (hh < 10)     hh = '0' + hh;    var mm = objD.getMinutes();
+	   if (mm < 10)     mm = '0' + mm;    var ss = objD.getSeconds();
+	   if (ss < 10)     ss = '0' + ss;    var ww = objD.getDay();
+	   if (ww == 0)     colorhead = "<font color=\"#FF0000\">";
+	   if (ww > 0 && ww < 6)     colorhead = "<font color=\"#373737\">";
+	   if (ww == 6)     colorhead = "<font color=\"#008000\">";
+	   if (ww == 0)     ww = "星期日";    if (ww == 1)     ww = "星期一";
+	   if (ww == 2)     ww = "星期二";    if (ww == 3)     ww = "星期三";
+	   if (ww == 4)     ww = "星期四";    if (ww == 5)     ww = "星期五";
+	   if (ww == 6)     ww = "星期六";    colorfoot = "</font>"    
+	   str = colorhead + yy + "-" + MM + "-" + dd + " " + hh + ":" + mm      + ":" + ss + "  " + ww + colorfoot;    
+	   return (str);   
+	   }   
+   function tick() 
+   {    var today;    today = new Date();    
+   document.getElementById("localtime").innerHTML = showLocale(today);
+   window.setTimeout("tick()", 1000);   
+   } 
+   tick(); 
+   </script> 
+    <div style="width:100%; font-family:华文彩云; text-align:center; font-size:20pt;">谢欢个人主页</div>
+
+    <div id="tabDiv" style="width: 1000px">
+
+        <div id="tabsHead">
+            <a id="tabs1" class="curtab" href="javascript:showTab('tabs1','tabContent1')">基本资料</a>
+            <a id="tabs2" class="tabs" href="javascript:showTab('tabs2','tabContent2')">学习经历</a>
+            <a id="tabs3" class="tab3" href="javascript:showTab('tabs3','tabContent3')">所得奖励</a>
+            <a id="tabs4" class="tabs4" href="javascript:showTab('tabs4','tabContent4')">最新动态</a>
+        </div>
+        
+        
+        
+
+        <div id="tabContent1" style="display: block">
+            <table style="border-width: 0; width: 100%">
+                <tr>
+                    <td rowspan="3" style="width: 300px;text-align:center">
+                        <img alt="谢欢" src="C:\Users\DELL\Desktop\web作业\1.jpg" style="width:280px"/></td>
+               <td colspan="3" rowspan="3">
+                        <table border="1" style="border-left-color: aqua;
+                            border-bottom-color: aqua; width: 701px; border-top-style: solid; border-top-color: aqua;
+                            border-right-style: solid; border-left-style: solid; height: 380px; border-right-color: aqua;
+                            border-bottom-style: solid">
+                            <tr>
+                                <td style="width: 50%">
+                                    姓名：谢欢</td>
+                                <td style="width: 50%">
+                                    生日：1998.01.05</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 50%">
+                                    国籍：中华人民共和国</td>
+                                <td style="width: 50%">
+                                    出生地：河北保定安国</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 50%; height: 29px">
+                                    身高：167cm</td>
+                                <td style="width: 50%; height: 29px">
+                                    体重：60kg</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 50%">
+                                    血型：B</td>
+                                <td style="width: 50%">
+                                    星座：摩羯座</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <p>谢欢，河北省保定市安国市人，学生，1998年1月5日出生于一个农村家庭，现就读于石家庄铁道大学。</p>
+<p>“有了梦，生命的银幕亮了。”我曾经读过一本与众不同的书，它的名字叫《造梦的雨果》。 这本书最大的特点就是用了大量精美的素描画来展现故事中主人公的生活环境，使故事的情节一步步推向高潮。翻开书的第一页，白色的银幕上只有一个字“贼”。再往后翻，在漆黑的宇宙里出现了一个星球，又从一个星球拓展到了星空，在星空的下方有一座城市，从城市又看到了街道，在这条街道上有一座火车站，我们的主人公雨果·卡布莱终于出现了。裹裹挟挟的人群中，我们尾随着他上了楼梯，走进长长的走廊中。雨果从走廊中的一个壁橱里钻了进去。在走廊的尽头有一个玩具店，店中坐着一位老爷爷。雨果猫着腰从一座大钟的后面向玩具店张望……这一幕幕就像放电影一样呈现在我们眼前。主人公——十二岁的雨果·卡布莱的一举一动都让人琢磨不透，牵引着我们继续读下去。</p>
+<p>努力并不一定会达到目的，但努力一定会有一个努力的结果，无论结果怎么样，和不努力肯定是不一样的。没有人可以决定自己会有什么样的未来，但那些积累在身体上的感觉，决定了当你可以站起来的那一刻，你会是怎样的站立姿势，也决定了你未来站立的地方！  这段出自艺兴的话，深深地打动着我。  给大家讲一个故事，1991年10月7日在一个极为普通的家庭，出生了一位叫做张艺兴的小男孩，17年过去了，他进入了SM公司当练习生，在接下来的五年里像他的那句名言“努力努力再努力”所说的，他每天不停的练习，看前辈的表演不断学习努力去琢磨努力去训练，一开始没有舞蹈基础的他，一个人在舞蹈培训结束了，默默守在舞蹈室一个人练舞，练到凌晨到在舞蹈室里睡着，他练到汗流浃背，衣服拧出来的水足以洗地板，以至于没日没夜的练习，让艺兴患上了严重的腰伤。他是一个爱唱歌的男孩，坚守着自己的原创，不断地去创作，他说每当他创作之时，是她最开心的时候.</p>                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                </tr>
+                <tr>
+                </tr>
+            </table>
+        </div>
+        <!--以下为所获奖励部分内容-->
+        <div id="tabContent3" style="display: none">
+            <ol>
+                <li>获得优秀军训个人</li>
+                <li>获得三等奖学金</li>
+                <li>获得摄影比赛优秀奖</li>
+                <li>获得ps比赛优秀奖</li>
+                <li>获得青马优秀个人荣誉称号</li>
+            </ol>
+        </div>
+        <!--以下为学习经历部分内容-->
+        <div id="tabContent2" style="display: none">
+           <p>我长大了   成长是一杯茶水，需要我们慢慢品，细细饮，才能品出其甜蜜，饮出其苦涩„„  ——题记   </p>
+           <p>午后，捧着一杯绿茶，淡雅的茶香，让我看到近日的一幕。   她是经常与我吵架的对象。不幸的是，这学期的座位恰好安排和她坐，真是不是冤家不碰头。这日晨读，她忘带了英语书。她用可怜巴巴的眼神望向正在读书的我。我看看她，她并没有开口说话，可我心中早已觉察。“要不要借她一起看呢？”我默想，“她又没问我借，为什么要给她一起看。”平日的矛盾促使我反对这种作法。然而，我又想，书中的道理、老师的教诲到哪去了呢？难道“互相帮助”只是一个随便喊的口号吗？矛盾是有，互助倒真，友谊尚存。经过一番心理斗争，我终还是把书挪了过去，示意与她一同看。她抚过书，抬头看着我，我俩传递了一个暖意的微笑。<p>
+        </div>
+         <!--以下为最新动态部分内容-->
+        <div id="tabContent4" style="display: none">
+         <p>暂无</p>
+        </div>
+    </div>
+	<hr/>
+	<div style="text-align: center; width: 100%; font-size: 12px; color: #333;">&copy;版权所有：石家庄铁道大学信息科学与技术学院</div>
+  </body>
+</html>
